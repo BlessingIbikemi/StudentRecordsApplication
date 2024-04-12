@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Add Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Include SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10/dist/sweetalert2.min.css">
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h4 style="color: #337ab7;">Add Students</h4>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <form class="form-horizontal form-label-left input_mask" method="post" action="~/Student/AddStudents" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Name" style="color: #337ab7;">Name <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="Name" name="Name" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DOB" style="color: #337ab7;">Date of Birth <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="date" id="DOB" name="DOB" required="required" class="form-control col-md-7 col-xs-12">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Email" style="color: #337ab7;">Email <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="email" id="Email" name="Email" required="required" class="form-control col-md-7 col-xs-12" data-parsley-trigger="change">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="MobileNumber" style="color: #337ab7;">Mobile Number <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="MobileNumber" name="MobileNumber" required="required" class="form-control col-md-7 col-xs-12" data-parsley-trigger="change">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Gender" style="color: #337ab7;">Gender <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control col-md-7 col-xs-12" name="Gender" id="Gender" required>
+                            <option value=null>--select--</option>
+                            <option value=Male>Male</option>
+                            <option value=Female>Female</option>
+                        </select>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message) && ViewBag.Message == "00")
+{
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                title: 'Success!',
+                text: 'The action was successful.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+}
+else if (!string.IsNullOrEmpty(ViewBag.Message) && ViewBag.Message == "01")
+{
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred during the action.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+}
+
+

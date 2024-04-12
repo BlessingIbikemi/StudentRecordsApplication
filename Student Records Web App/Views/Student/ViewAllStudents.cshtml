@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Services.Model.Student>
+
+@{
+    ViewBag.Title = "View All Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h4 style="color: #337ab7;">Search</h4>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <form class="form-label-left input_mask" method="post" action="~/Student/ViewAllStudents">
+
+
+            <div class="col-md-12 col-sm-12  form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Student Name" name="Name">
+                <span class="fa fa-tag form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-6 col-sm-6 " , style="margin-top: 10px;">
+
+                <button type="submit" class="btn btn-success">Search</button>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+<div class="x_panel" , style="margin-top: 10px;">
+    <div class="x_title">
+        <h4 style="color: #337ab7;">Student List</h4>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+
+            <li>
+                <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box table-responsive">
+                    <table id="datatable-buttons" class="table table-striped jambo_table bulk_action" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Delete Student</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            @if (Model.Count() > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.MobileNumber</td>
+                                        <td>@item.DOB</td>
+                                        <td>@item.Gender</td>
+                                        <td><a href="@Url.Action("DeleteStudent", "Student", new { Id = item.ID})">Delete</a></td>
+
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
